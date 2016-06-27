@@ -64,9 +64,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFE-4f-K1m" userLabel="Rating">
-                                            <rect key="frame" x="342" y="0.0" width="25" height="59"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <rect key="frame" x="349" y="0.0" width="21" height="59"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4l1-Rz-Oil" userLabel="Thumbnail">
@@ -76,17 +76,17 @@
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bax-IF-Sas" userLabel="Container">
-                                            <rect key="frame" x="45" y="0.0" width="285" height="59"/>
+                                            <rect key="frame" x="45" y="0.0" width="300" height="59"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdl-b3-4au">
-                                                    <rect key="frame" x="0.0" y="0.0" width="285" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PubDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWo-WN-NYa" userLabel="PubDate">
-                                                    <rect key="frame" x="0.0" y="30" width="285" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <rect key="frame" x="0.0" y="30" width="300" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -105,7 +105,7 @@
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="ZFE-4f-K1m" secondAttribute="trailing" constant="8" id="8W5-oE-Vts"/>
+                                        <constraint firstAttribute="trailing" secondItem="ZFE-4f-K1m" secondAttribute="trailing" constant="5" id="8W5-oE-Vts"/>
                                         <constraint firstItem="4l1-Rz-Oil" firstAttribute="top" secondItem="egu-ZC-kX4" secondAttribute="topMargin" id="G6t-24-OMJ"/>
                                         <constraint firstItem="bax-IF-Sas" firstAttribute="leading" secondItem="egu-ZC-kX4" secondAttribute="leading" constant="45" id="GHt-eo-LZm"/>
                                         <constraint firstAttribute="bottom" secondItem="ZFE-4f-K1m" secondAttribute="bottom" id="KCT-Fb-guV"/>
@@ -114,7 +114,7 @@
                                         <constraint firstItem="bax-IF-Sas" firstAttribute="top" secondItem="egu-ZC-kX4" secondAttribute="top" id="ber-cN-zDp"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="4l1-Rz-Oil" secondAttribute="bottom" id="vnL-m1-Wg7"/>
                                         <constraint firstItem="4l1-Rz-Oil" firstAttribute="leading" secondItem="egu-ZC-kX4" secondAttribute="leadingMargin" id="wYe-gP-y3I"/>
-                                        <constraint firstAttribute="trailing" secondItem="bax-IF-Sas" secondAttribute="trailing" constant="45" id="ypq-ct-yJP"/>
+                                        <constraint firstAttribute="trailing" secondItem="bax-IF-Sas" secondAttribute="trailing" constant="30" id="ypq-ct-yJP"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
