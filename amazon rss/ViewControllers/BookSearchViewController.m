@@ -100,7 +100,7 @@
     }
     /** Sort */
     NSSortDescriptor *sortByRating = [[NSSortDescriptor alloc] initWithKey:@"rating" ascending:NO];
-    NSSortDescriptor *sortByTitle = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
+    NSSortDescriptor *sortByTitle = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(caseInsensitiveCompare:)];
     NSArray *sortedResult = [searchedBooks sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortByRating, sortByTitle,nil]];
     _bookTVC.books = sortedResult;
     /** Check if found books */
