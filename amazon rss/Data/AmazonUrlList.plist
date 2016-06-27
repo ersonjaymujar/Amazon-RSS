@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>RSSUrl</key>
+	<array>
+		<string>http://www.amazon.co.uk/gp/rss/bestsellers/books/72/ref=zg_bs_72_rsslink</string>
+		<string>http://www.amazon.co.uk/gp/rss/bestsellers/books/62/ref=zg_bs_62_rsslink</string>
+		<string>http://www.amazon.co.uk/gp/rss/bestsellers/books/63/ref=zg_bs_63_rsslink</string>
+		<string>http://www.amazon.co.uk/gp/rss/bestsellers/books/426317031/ref=zg_bs_426317031_rsslink</string>
+		<string>http://www.amazon.co.uk/gp/rss/bestsellers/books/270408/ref=zg_bs_270408_rsslink</string>
+		<string>http://www.amazon.co.uk/gp/rss/bestsellers/books/270423/ref=zg_bs_270423_rsslink</string>
+	</array>
+</dict>
+</plist>
