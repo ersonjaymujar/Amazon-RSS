@@ -86,7 +86,7 @@
             NSArray *fBooks = [_bookDictionary objectForKey:[downloadRequest.URL  absoluteString]];
             if(fBooks){
                 for (Book *fb in fBooks) {
-                    int index = [_books indexOfObject:fb];
+                    NSInteger index = [_books indexOfObject:fb];
                     //Update the image of the book's cell
                     NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
                     BookCell *cell = [self.tableView cellForRowAtIndexPath:path];

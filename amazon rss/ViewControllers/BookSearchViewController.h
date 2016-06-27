@@ -15,6 +15,7 @@
 
 @interface BookSearchViewController : UIViewController <UISearchBarDelegate, BookRSSManagerDelegate>
 
+/** TableView where we will display search result */
 @property (nonatomic,weak) BookTableViewController *bookTVC;
 
 @end

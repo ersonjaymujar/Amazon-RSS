@@ -64,6 +64,7 @@
 {
     [searchBar resignFirstResponder];
     searchBar.text = @"";
+    _bookToSearch = @"";
     _bookTVC.books = nil;
 }
 
@@ -71,6 +72,7 @@
 {
     searchBar.text = @"";
     _bookToSearch = @"";
+    _bookTVC.books = nil;
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
@@ -101,12 +103,34 @@
     NSSortDescriptor *sortByTitle = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
     NSArray *sortedResult = [searchedBooks sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortByRating, sortByTitle,nil]];
     _bookTVC.books = sortedResult;
+    /** Check if found books */
+    if(sortedResult.count == 0){
+        [self showNoFoundBooksAlert];
+    }
 }
 
 #pragma mark - UITapGestureRecognizer Callback
 - (void)dismissKeyboard
 {
     [self.view endEditing:YES];
+}
+
+#pragma mark - Helper
+- (void)showNoFoundBooksAlert
+{
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"Search Result"
+                                          message:[NSString stringWithFormat:@"No found books with title \"%@\"",_bookToSearch]
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                   NSLog(@"OK action");
+                               }];
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
