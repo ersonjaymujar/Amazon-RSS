@@ -52,6 +52,7 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     _bookToSearch = searchText;
+    [_bookRSSManager loadRSSFeedFromUrls:_rssUrls clearPreviousBooks:YES];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -94,6 +95,10 @@
 #pragma mark - BookRSSManagerDelegate
 - (void)onBooksAreReady
 {
+    if(!_bookToSearch || [_bookToSearch isEqualToString:@""]){
+        _bookTVC.books = nil;
+        return;
+    }
     NSArray *searchedBooks = [_bookRSSManager searchBookWithTitle:_bookToSearch withMinimumRating:4.5 andMaximumRating:5.0];
     if(searchedBooks.count == 0){
         searchedBooks = [_bookRSSManager searchBookWithTitle:_bookToSearch withMinimumRating:4.0 andMaximumRating:4.0];

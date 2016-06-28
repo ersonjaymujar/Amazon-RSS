@@ -30,6 +30,7 @@
 - (void)loadRSSFeedFromUrls:(NSArray *)urls clearPreviousBooks:(BOOL)shouldClear
 {
     if(shouldClear) [self clearBooks];
+    [_parserOperationQueue cancelAllOperations];
     for (NSString *url in urls) {
         [self loadRSSFeedFromUrl:url clearPreviousBooks:false];
     }
@@ -45,6 +46,7 @@
 
 - (NSArray *)searchBookWithTitle:(NSString *)title withMinimumRating:(float)minRating andMaximumRating:(float)maxRating
 {
+    if(!title || [title isEqualToString:@""]) return [NSArray new];
     //Filter books by rating first
     NSPredicate *ratingPredicate = [NSPredicate predicateWithBlock:^BOOL(Book *book, NSDictionary<NSString *,id> *bindings) {
         return [book.rating floatValue] >= minRating && [book.rating floatValue] <= maxRating;
