@@ -123,9 +123,9 @@
     NSArray *sortedResult = [searchedBooks sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortByRating, sortByTitle,nil]];
     _bookTVC.books = sortedResult;
     /** Check if found books */
-    if(sortedResult.count == 0){
-        [self showNoFoundBooksAlert:title];
-    }
+//    if(sortedResult.count == 0){
+//        [self showNoFoundBooksAlert:title];
+//    }
 }
 
 - (void)showNoFoundBooksAlert:(NSString*)title
