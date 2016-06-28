@@ -52,13 +52,15 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     _bookToSearch = searchText;
-    [_bookRSSManager loadRSSFeedFromUrls:_rssUrls clearPreviousBooks:YES];
+    [self searchBook:_bookToSearch];
+    [_bookRSSManager loadRSSFeedFromUrls:_rssUrls clearPreviousBooks:NO];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
-    [_bookRSSManager loadRSSFeedFromUrls:_rssUrls clearPreviousBooks:YES];
+    [self searchBook:_bookToSearch];
+    [_bookRSSManager loadRSSFeedFromUrls:_rssUrls clearPreviousBooks:NO];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
@@ -99,19 +101,7 @@
         _bookTVC.books = nil;
         return;
     }
-    NSArray *searchedBooks = [_bookRSSManager searchBookWithTitle:_bookToSearch withMinimumRating:4.5 andMaximumRating:5.0];
-    if(searchedBooks.count == 0){
-        searchedBooks = [_bookRSSManager searchBookWithTitle:_bookToSearch withMinimumRating:4.0 andMaximumRating:4.0];
-    }
-    /** Sort */
-    NSSortDescriptor *sortByRating = [[NSSortDescriptor alloc] initWithKey:@"rating" ascending:NO];
-    NSSortDescriptor *sortByTitle = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(caseInsensitiveCompare:)];
-    NSArray *sortedResult = [searchedBooks sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortByRating, sortByTitle,nil]];
-    _bookTVC.books = sortedResult;
-    /** Check if found books */
-    if(sortedResult.count == 0){
-        [self showNoFoundBooksAlert];
-    }
+    [self searchBook:_bookToSearch];
 }
 
 #pragma mark - UITapGestureRecognizer Callback
@@ -121,11 +111,28 @@
 }
 
 #pragma mark - Helper
-- (void)showNoFoundBooksAlert
+- (void)searchBook:(NSString*)title
+{
+    NSArray *searchedBooks = [_bookRSSManager searchBookWithTitle:title withMinimumRating:4.5 andMaximumRating:5.0];
+    if(searchedBooks.count == 0){
+        searchedBooks = [_bookRSSManager searchBookWithTitle:title withMinimumRating:4.0 andMaximumRating:4.0];
+    }
+    /** Sort */
+    NSSortDescriptor *sortByRating = [[NSSortDescriptor alloc] initWithKey:@"rating" ascending:NO];
+    NSSortDescriptor *sortByTitle = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(caseInsensitiveCompare:)];
+    NSArray *sortedResult = [searchedBooks sortedArrayUsingDescriptors:[NSArray arrayWithObjects:sortByRating, sortByTitle,nil]];
+    _bookTVC.books = sortedResult;
+    /** Check if found books */
+    if(sortedResult.count == 0){
+        [self showNoFoundBooksAlert:title];
+    }
+}
+
+- (void)showNoFoundBooksAlert:(NSString*)title
 {
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle:@"Search Result"
-                                          message:[NSString stringWithFormat:@"No found books with title \"%@\"",_bookToSearch]
+                                          message:[NSString stringWithFormat:@"No found books with title \"%@\"",title]
                                           preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction
                                actionWithTitle:NSLocalizedString(@"OK", @"OK action")
